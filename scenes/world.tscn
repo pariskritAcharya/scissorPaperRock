@@ -1,0 +1,286 @@
+[gd_scene load_steps=21 format=3 uid="uid://c56kld5jnergh"]
+
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_vdxfp"]
+[ext_resource type="Texture2D" uid="uid://d3gh4hefigij0" path="res://asserts/blue-rock.png" id="1_x4f2w"]
+[ext_resource type="Texture2D" uid="uid://bp442oq5itfrq" path="res://asserts/blue-scissor.png" id="2_4bymy"]
+[ext_resource type="Texture2D" uid="uid://e175su8oblh8" path="res://asserts/scissor.png" id="2_qrmup"]
+[ext_resource type="Texture2D" uid="uid://grwbyurpaw4t" path="res://asserts/paper.png" id="3_1llbr"]
+[ext_resource type="Texture2D" uid="uid://bvb5s1rdtnu1c" path="res://asserts/blue-paper.png" id="3_3d5t8"]
+[ext_resource type="Texture2D" uid="uid://y2xa2jsyehfn" path="res://asserts/rock.png" id="4_shj58"]
+[ext_resource type="Texture2D" uid="uid://bv8udwor6nb87" path="res://asserts/red-rock.png" id="5_snq0n"]
+[ext_resource type="Texture2D" uid="uid://civy031f5wdsk" path="res://asserts/red-scissor.png" id="6_w1wwj"]
+[ext_resource type="Texture2D" uid="uid://1uroukjfjmj2" path="res://asserts/red-paper.png" id="7_hp1dr"]
+[ext_resource type="Script" path="res://scenes/red hand.gd" id="8_j6pig"]
+[ext_resource type="AudioStream" uid="uid://ddwfkqdvawjph" path="res://sounds/game-music-loop-7-145285.mp3" id="12_qqyh2"]
+[ext_resource type="AudioStream" uid="uid://bwu000d66tdv" path="res://sounds/loose.mp3" id="15_kills"]
+[ext_resource type="AudioStream" uid="uid://tw2cpgkswpby" path="res://sounds/win.mp3" id="16_awddr"]
+[ext_resource type="AudioStream" uid="uid://betx2h3u6grf0" path="res://sounds/rock.mp3" id="17_f0747"]
+[ext_resource type="AudioStream" uid="uid://dgpgn1erwvlif" path="res://sounds/draw.mp3" id="17_f7308"]
+[ext_resource type="AudioStream" uid="uid://b3ihg4wgta2dc" path="res://sounds/paper.mp3" id="18_3q8gv"]
+[ext_resource type="AudioStream" uid="uid://dy6a6gleffpng" path="res://sounds/scissor.mp3" id="19_mdccv"]
+[ext_resource type="AudioStream" uid="uid://cmeee4ao7owae" path="res://sounds/shooting-sound-fx-159024.mp3" id="19_pu5oh"]
+[ext_resource type="Texture2D" uid="uid://b3nhrxkonfjvt" path="res://asserts/settings.png" id="20_ex3xp"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vdxfp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.556863, 1, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 242.0
+offset_top = -193.0
+offset_right = -263.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.109804, 0.109804, 0.109804, 0.333333)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -304.0
+offset_top = -200.0
+offset_right = 304.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="rock" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_shj58")
+
+[node name="paper" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_1llbr")
+
+[node name="scissor" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_qrmup")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 544.0
+offset_top = 229.0
+offset_right = 622.0
+offset_bottom = 366.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Label"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.564103
+anchor_top = 0.0948905
+anchor_right = 1.55128
+anchor_bottom = 0.941606
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.239216)
+metadata/_edit_use_anchors_ = true
+
+[node name="win" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 370.0
+offset_top = 229.0
+offset_right = 739.0
+offset_bottom = 366.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "blue wins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/win"]
+modulate = Color(0.670588, 0.109804, 0.960784, 0.509804)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -243.0
+offset_top = 13.0
+offset_right = 215.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.807843)
+
+[node name="blue score" type="Label" parent="CanvasLayer"]
+offset_left = 35.0
+offset_top = 26.0
+offset_right = 122.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 50
+text = "10"
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/blue score"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -21.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.239216)
+
+[node name="total matches" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.5
+offset_right = 131.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "matches: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/total matches"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_right = 16.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.239216)
+
+[node name="red score" type="Label" parent="CanvasLayer"]
+offset_left = 1050.0
+offset_top = 25.0
+offset_right = 1137.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 50
+text = "10"
+horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/red score"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -21.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.239216)
+
+[node name="blue hand" type="Node2D" parent="."]
+position = Vector2(2, 135)
+scale = Vector2(0.8, 0.8)
+
+[node name="Blue-rock" type="Sprite2D" parent="blue hand"]
+visible = false
+texture = ExtResource("1_x4f2w")
+centered = false
+
+[node name="Blue-scissor" type="Sprite2D" parent="blue hand"]
+texture = ExtResource("2_4bymy")
+centered = false
+
+[node name="Blue-paper" type="Sprite2D" parent="blue hand"]
+visible = false
+texture = ExtResource("3_3d5t8")
+centered = false
+
+[node name="red hand" type="Node2D" parent="."]
+position = Vector2(238, 133)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("8_j6pig")
+
+[node name="Red-rock" type="Sprite2D" parent="red hand"]
+visible = false
+texture = ExtResource("5_snq0n")
+centered = false
+flip_h = true
+
+[node name="Red-scissor" type="Sprite2D" parent="red hand"]
+texture = ExtResource("6_w1wwj")
+centered = false
+flip_h = true
+
+[node name="Red-paper" type="Sprite2D" parent="red hand"]
+visible = false
+texture = ExtResource("7_hp1dr")
+centered = false
+flip_h = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="gameloop music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_qqyh2")
+volume_db = -8.735
+
+[node name="loose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_kills")
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_awddr")
+
+[node name="draw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_f7308")
+
+[node name="rock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_f0747")
+
+[node name="paper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_3q8gv")
+
+[node name="scissor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_mdccv")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_pu5oh")
+
+[node name="setting" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 6.0
+offset_right = 2295.0
+offset_bottom = 2054.0
+scale = Vector2(0.04, 0.04)
+texture_normal = ExtResource("20_ex3xp")
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/rock" to="." method="_on_rock_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/paper" to="." method="_on_paper_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/scissor" to="." method="_on_scissor_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="setting" to="." method="_on_setting_pressed"]

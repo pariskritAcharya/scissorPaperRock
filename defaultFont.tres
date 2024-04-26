@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bjclht04xcmbv"]
+
+[ext_resource type="FontFile" uid="uid://dr1cc5vmywmha" path="res://asserts/Overload.otf" id="1_bj6nf"]
+
+[resource]
+base_font = ExtResource("1_bj6nf")

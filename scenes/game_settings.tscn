@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck3wade65m3hd"]
+
+[ext_resource type="Script" path="res://scenes/game_settings.gd" id="1_wmox3"]
+[ext_resource type="StyleBox" uid="uid://bp4ktuiy1n5gs" path="res://button.tres" id="2_jdb7i"]
+[ext_resource type="AudioStream" uid="uid://ddwfkqdvawjph" path="res://sounds/game-music-loop-7-145285.mp3" id="2_rqgvt"]
+[ext_resource type="Texture2D" uid="uid://b3nhrxkonfjvt" path="res://asserts/settings.png" id="3_b5jkd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdt7k"]
+content_margin_left = 10.0
+bg_color = Color(0, 0.407843, 0.337255, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Game settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wmox3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101961, 0.509804, 0.733333, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.5
+offset_top = -34.5
+offset_right = 83.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Game mode:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.152941, 0.152941, 0.152941, 1)
+theme_override_font_sizes/font_size = 40
+text = "Total score:"
+
+[node name="total score" type="LineEdit" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../quit")
+focus_neighbor_bottom = NodePath("../../time")
+focus_next = NodePath("../../time")
+focus_previous = NodePath("../../quit")
+theme_override_constants/minimum_character_width = 3
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_rdt7k")
+placeholder_text = "5"
+max_length = 2
+select_all_on_focus = true
+caret_blink = true
+
+[node name="time" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../HBoxContainer/total score")
+focus_neighbor_bottom = NodePath("../difficulty")
+focus_next = NodePath("../difficulty")
+focus_previous = NodePath("../HBoxContainer/total score")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_jdb7i")
+text = "3 seconds"
+
+[node name="difficulty" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../time")
+focus_neighbor_bottom = NodePath("../start game")
+focus_next = NodePath("../start game")
+focus_previous = NodePath("../time")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_jdb7i")
+text = "easy"
+
+[node name="start game" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../difficulty")
+focus_neighbor_bottom = NodePath("../quit")
+focus_next = NodePath("../quit")
+focus_previous = NodePath("../difficulty")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_jdb7i")
+text = "Start Game"
+
+[node name="results" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../difficulty")
+focus_neighbor_bottom = NodePath("../quit")
+focus_next = NodePath("../quit")
+focus_previous = NodePath("../difficulty")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_jdb7i")
+text = "Results"
+
+[node name="quit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../start game")
+focus_neighbor_bottom = NodePath("../HBoxContainer/total score")
+focus_next = NodePath("../HBoxContainer/total score")
+focus_previous = NodePath("../start game")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_jdb7i")
+text = "Quit
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rqgvt")
+autoplay = true
+
+[node name="Settings" type="Sprite2D" parent="."]
+position = Vector2(329, 202)
+scale = Vector2(0.053, 0.053)
+texture = ExtResource("3_b5jkd")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/time" to="." method="_on_time_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/difficulty" to="." method="_on_difficulty_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/start game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/results" to="." method="_on_results_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

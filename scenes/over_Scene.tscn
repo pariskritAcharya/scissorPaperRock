@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwqtglmgdp4d3"]
+
+[ext_resource type="Script" path="res://scenes/over_Scene.gd" id="1_dkfq5"]
+[ext_resource type="AudioStream" uid="uid://chbbve8d7vht1" path="res://sounds/final win.mp3" id="3_kpll7"]
+[ext_resource type="AudioStream" uid="uid://mbuywn6amyds" path="res://sounds/old-house-161057.mp3" id="4_ugajd"]
+[ext_resource type="AudioStream" uid="uid://cmeee4ao7owae" path="res://sounds/shooting-sound-fx-159024.mp3" id="5_862le"]
+[ext_resource type="Texture2D" uid="uid://u4hukrybkx7u" path="res://asserts/reloadd.png" id="5_xyx00"]
+[ext_resource type="Texture2D" uid="uid://b3nhrxkonfjvt" path="res://asserts/settings.png" id="6_khw0w"]
+
+[node name="over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dkfq5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.121569, 0.556863, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -151.0
+offset_right = 165.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Blue wins!!!"
+
+[node name="difficulty" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "difficulty:easy"
+
+[node name="matches" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Matches:"
+
+[node name="blueScore" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Blue:4"
+
+[node name="RedScore" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Red:5"
+
+[node name="final win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kpll7")
+
+[node name="final loose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ugajd")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_862le")
+
+[node name="reload" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 411.0
+offset_top = 496.0
+offset_right = 923.0
+offset_bottom = 1008.0
+scale = Vector2(0.35, 0.35)
+texture_normal = ExtResource("5_xyx00")
+
+[node name="settings" type="TextureButton" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+offset_left = 592.0
+offset_top = 496.0
+offset_right = 2556.0
+offset_bottom = 2544.0
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("6_khw0w")
+
+[connection signal="pressed" from="reload" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

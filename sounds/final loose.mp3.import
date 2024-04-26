@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bs00w0teltlc8"
+path="res://.godot/imported/final loose.mp3-69233c562bc90abe628c4ce3203e2d1a.mp3str"
+
+[deps]
+
+source_file="res://sounds/final loose.mp3"
+dest_files=["res://.godot/imported/final loose.mp3-69233c562bc90abe628c4ce3203e2d1a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
